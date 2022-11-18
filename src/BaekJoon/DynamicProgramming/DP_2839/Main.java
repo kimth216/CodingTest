@@ -12,22 +12,30 @@ import java.util.Scanner;
 // 상근이가 설탕을 정확하게 N킬로그램 배달해야 할 때, 봉지 몇 개를 가져가면 되는지 그 수를 구하는 프로그램을 작성하시오.
 // 입력
 // 첫째 줄에 N이 주어진다. (3 ≤ N ≤ 5000)
+// 상근이가 배달하는 봉지의 최소 개수를 출력한다. 만약, 정확하게 N킬로그램을 만들 수 없다면 -1을 출력한다.
 
 public class Main {
 
     //함수에서 사용할 변수들
-    static int n; //배달할 설탕 n kg
+    static int N; //배달할 설탕 n kg
 
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
-        n = sc.nextInt();
 
-        temp(n);
-    }
+        N = sc.nextInt();
 
-    public static void temp(int i) {
-
-        System.out.println("result : " + n );
-
+        if(N == 4 || N == 7) { // 4 또는 7
+            System.out.println(-1);
+        }else if( N % 5 == 0 ){ // 5의 배수
+            System.out.println( N / 5);
+        }else if(N % 5 == 1){ // 5의 배수 + 1
+            System.out.println((N-6)/5 + 2);
+        }else if(N % 5 == 2){ // 5의 배수 + 2
+            System.out.println((N-12)/5 + 4);
+        }else if(N % 5 == 3){ // 5의 배수 + 3
+            System.out.println((N/5) + 1);
+        }else if(N % 5 == 4){ //5의 배수 + 4
+            System.out.println((N-9)/5 + 3);
+        }
     }
 }
